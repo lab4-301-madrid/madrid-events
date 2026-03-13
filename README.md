@@ -1,1 +1,19 @@
-readme
+**Yutao - Contributions and Implemented User Stories**
+
+In this halfway checkpoint, I was responsible for implementing entrant-side invitation response and notification features in the Android lottery app. My work focused on the selected entrant workflow: notifying entrants when they are chosen, allowing them to accept or decline invitations, and supporting the replacement flow when a selected entrant gives up their spot. On the notification side, I implemented the core notification model, the notification list screen, the RecyclerView adapter, and Firebase Cloud Messaging support so that entrants can receive and view event-related updates in the app. The uploaded code includes a dedicated notification fragment that loads notifications for the current user, a notification data model containing event and recipient information, an adapter that renders notification items, and layouts for the notification screen and each notification entry.
+
+**US 01.04.01 – Entrant receives notification when selected from the waiting list**
+
+For this user story, I implemented the notification support that informs an entrant when they are selected to participate in an event. I created a Notification model to store the related event, organizer, message content, recipient, target group, and timestamp, making it possible to represent both personal and group-based event notifications. I also implemented the notification screen for entrants, where notifications are displayed in a RecyclerView and updated in real time for the current user. In addition, Firebase Cloud Messaging support was added through a messaging service that receives incoming messages and posts Android system notifications through a notification channel. This allows entrants to stay informed even when they are not actively viewing the notification page.
+
+**US 01.05.02 – Entrant accepts invitation to register/sign up**
+
+For this user story, I implemented the entrant response flow for accepting an invitation after being selected. When an entrant accepts the invitation, the app confirms their participation and moves them into the registered or enrolled state for that event. This feature is part of the broader invitation-response workflow and is closely connected to the notification system, since selected entrants first need to be informed that a response is required. The goal of this implementation was to ensure that invitation handling is clear for the user and that event participation status is updated consistently after a successful response.
+
+**US 01.05.03 – Entrant declines invitation**
+
+For this feature, I implemented the ability for an entrant to decline an invitation after being chosen. This gives users control over whether they want to participate after selection. The decline flow updates the entrant’s status appropriately and releases the event spot so it can be offered to another eligible entrant. This user story is an important part of the event response process because it allows the system to continue managing limited-capacity events fairly instead of leaving unused spots blocked by inactive invitations.
+
+**US 01.05.01 – Entrant gets another chance through waiting list replacement**
+
+For this user story, I implemented support for the replacement flow that occurs when a previously selected entrant declines or cancels their invitation. Once a spot becomes available, the system can continue the lottery process by selecting a replacement from the waiting list according to the event’s fairness rules. The replacement entrant is then moved into the selected or invited state and can be notified that they now have the opportunity to respond. This feature connects the decline workflow to the waiting list and helps ensure that event capacity is filled efficiently while preserving fairness for entrants who were not initially chosen.
